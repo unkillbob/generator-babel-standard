@@ -1,0 +1,33 @@
+{
+  "name": "generator-babel-standard",
+  "version": "1.0.0",
+  "description": "Yeoman generator for simple node modules with babel transpiling and code style with feross/standard",
+  "license": "MIT",
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unkillbob/generator-babel-standard.git"
+  },
+  "author": {
+    "name": "James Bunt",
+    "url": "https://github.com/unkillbob"
+  },
+  "scripts": {
+    "test": "standard && mocha"
+  },
+  "files": [
+    "app"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^0.19.0",
+    "chalk": "^1.0.0",
+    "yosay": "^1.0.2"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.4",
+    "standard": "^3.7.2"
+  }
+}
