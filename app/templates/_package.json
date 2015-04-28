@@ -1,5 +1,24 @@
 {
-  "name": "package",
+  "name": "<%= moduleName %>",
   "version": "0.0.0",
-  "dependencies": {}
+  "description": "",
+  "license": "MIT",
+  "repository": "<%= githubUsername %>/<%= moduleName %>",
+  "author": {
+    "name": "<%= name %>",
+    "email": "<%= email %>",
+    "url": "<%= humanizedWebsite %>"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    ""
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "babel": "5.x",
+    "mocha": "*",
+    "standard": "3.x"
+  }
 }

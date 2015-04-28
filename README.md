@@ -2,6 +2,7 @@
 
 > [Yeoman](http://yeoman.io) generator for simple node modules with [babel](https://github.com/babel/babel) transpiling and code style with [feross/standard](https://github.com/feross/standard).
 
+Heavily inspired by / borrowed from https://github.com/sindresorhus/generator-nm.
 
 ## Getting Started
 
