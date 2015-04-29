@@ -22,12 +22,10 @@
     "yeoman-generator"
   ],
   "dependencies": {
-    "chalk": "^1.0.0",
     "humanize-url": "^1.0.1",
     "lodash": "^3.7.0",
     "normalize-url": "^1.2.0",
-    "yeoman-generator": "^0.19.0",
-    "yosay": "^1.0.2"
+    "yeoman-generator": "^0.19.0"
   },
   "devDependencies": {
     "mocha": "^2.2.4",
