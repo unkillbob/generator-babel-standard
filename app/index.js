@@ -14,7 +14,9 @@ module.exports = yeoman.generators.Base.extend({
       name: 'moduleName',
       message: 'What do you want to name your module?',
       default: this.appname.replace(/\s/g, '-'),
-      filter: kebabCase
+      filter: function (val) {
+        return kebabCase(val)
+      }
     }, {
       name: 'githubUsername',
       message: 'What is your GitHub username?',
@@ -29,7 +31,9 @@ module.exports = yeoman.generators.Base.extend({
       validate: function (val) {
         return val.length > 0 ? true : 'You have to provide a website URL'
       },
-      filter: normalizeUrl
+      filter: function (val) {
+        return normalizeUrl(val)
+      }
     }], function (props) {
       this.moduleName = props.moduleName
       this.camelModuleName = camelCase(props.moduleName)
