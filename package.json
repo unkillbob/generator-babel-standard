@@ -30,5 +30,10 @@
   "devDependencies": {
     "mocha": "^2.2.4",
     "standard": "^3.7.2"
+  },
+  "standard": {
+    "ignore": [
+      "**/templates/**"
+    ]
   }
 }
