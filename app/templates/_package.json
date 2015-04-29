@@ -9,16 +9,28 @@
     "email": "<%= email %>",
     "url": "<%= humanizedWebsite %>"
   },
+  "main": "dist/index.js",
   "scripts": {
-    "test": "mocha"
+    "build": "babel src --out-dir dist",
+    "watch": "watchy -w src/**.js -- npm run build",
+    "watch-test": "watchy -w src/**.js,test/**.js -- npm test",
+    "pretest": "npm run build",
+    "test": "standard && mocha --compilers js:babel/register",
+    "prepublish": "npm test"
   },
   "keywords": [
     ""
   ],
   "dependencies": {},
   "devDependencies": {
-    "babel": "5.x",
+    "babel": "*",
     "mocha": "*",
-    "standard": "3.x"
+    "standard": "*",
+    "watchy": "*"
+  },
+  "standard": {
+    "ignore": [
+      "dist/**"
+    ]
   }
 }
