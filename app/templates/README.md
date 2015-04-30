@@ -1,4 +1,14 @@
-# <%= moduleName %> [![Build Status](https://travis-ci.org/<%= githubUsername %>/<%= moduleName %>.svg?branch=master)](https://travis-ci.org/<%= githubUsername %>/<%= moduleName %>)
+# <%= moduleName %>
+[![travis][travis-image]][travis-url]
+[![npm][npm-image]][npm-url]
+[![js-standard-style][standard-style-image]][downloads-url]
+
+[travis-image]: https://img.shields.io/travis/<%= githubUsername %>/<%= moduleName %>.svg?style=flat
+[travis-url]: https://travis-ci.org/<%= githubUsername %>/<%= moduleName %>
+[npm-image]: https://img.shields.io/npm/v/<%= moduleName %>.svg?style=flat
+[npm-url]: https://npmjs.org/package/<%= moduleName %>
+[standard-style-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat
+[standard-style-url]: https://github.com/feross/standard
 
 ## Install
 

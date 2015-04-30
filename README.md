@@ -1,4 +1,14 @@
-# generator-babel-standard [![Build Status](https://secure.travis-ci.org/unkillbob/generator-babel-standard.png?branch=master)](https://travis-ci.org/unkillbob/generator-babel-standard)
+# generator-babel-standard
+[![travis][travis-image]][travis-url]
+[![npm][npm-image]][npm-url]
+[![js-standard-style][standard-style-image]][standard-style-url]
+
+[travis-image]: https://img.shields.io/travis/unkillbob/generator-babel-standard.svg?style=flat
+[travis-url]: https://travis-ci.org/unkillbob/generator-babel-standard
+[npm-image]: https://img.shields.io/npm/v/generator-babel-standard.svg?style=flat
+[npm-url]: https://npmjs.org/package/generator-babel-standard
+[standard-style-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat
+[standard-style-url]: https://github.com/feross/standard
 
 > [Yeoman](http://yeoman.io) generator for simple node modules with [babel](https://github.com/babel/babel) transpiling and code style with [feross/standard](https://github.com/feross/standard).
 
