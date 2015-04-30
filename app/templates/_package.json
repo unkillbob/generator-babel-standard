@@ -11,12 +11,11 @@
   },
   "main": "dist/index.js",
   "scripts": {
-    "build": "babel src --out-dir dist",
-    "watch": "watchy -w src/**.js -- npm run build",
-    "watch-test": "watchy -w src/**.js,test/**.js -- npm test",
-    "pretest": "npm run build",
+    "build": "babel src -d dist",
+    "post-build": "onchange 'dist/**.js' 'test/**.js' -- npm test",
+    "watch": "npm run build -- -w & npm run post-build",
     "test": "standard && mocha --compilers js:babel/register",
-    "prepublish": "npm test"
+    "prepublish": "npm run build && npm test"
   },
   "keywords": [
     ""
@@ -26,10 +25,12 @@
     "babel": "*",
     "mocha": "*",
     "standard": "*",
-    "watchy": "*"
+    "onchange": "1.x"
   },
   "standard": {
     "ignore": [
+      "coverage/**",
+      "node_modules/**",
       "dist/**"
     ]
   }
