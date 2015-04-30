@@ -14,7 +14,11 @@
     "url": "https://github.com/unkillbob"
   },
   "scripts": {
-    "test": "standard && mocha"
+    "build": "babel src -d generators",
+    "post-build": "onchange 'generators/**' 'test/**.js' -- npm test",
+    "watch": "npm run build -- -w & npm run post-build",
+    "test": "standard && mocha --compilers js:babel/register",
+    "prepublish": "npm run build && npm test"
   },
   "files": [
     "app"
@@ -29,12 +33,16 @@
     "yeoman-generator": "^0.19.0"
   },
   "devDependencies": {
-    "mocha": "^2.2.4",
-    "standard": "^3.7.2"
+    "babel": "*",
+    "mocha": "*",
+    "onchange": "1.x",
+    "standard": "*"
   },
   "standard": {
     "ignore": [
-      "**/templates/**"
+      "coverage/**",
+      "generators/**",
+      "node_modules/**"
     ]
   }
 }
