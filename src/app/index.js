@@ -1,40 +1,32 @@
 'use strict'
 
-var normalizeUrl = require('normalize-url'),
-  humanizeUrl = require('humanize-url'),
-  yeoman = require('yeoman-generator'),
-  camelCase = require('lodash/string/camelCase'),
-  kebabCase = require('lodash/string/kebabCase')
+import normalizeUrl from 'normalize-url'
+import humanizeUrl from 'humanize-url'
+import yeoman from 'yeoman-generator'
+import camelCase from 'lodash/string/camelCase'
+import kebabCase from 'lodash/string/kebabCase'
 
 module.exports = yeoman.generators.Base.extend({
-  init: function () {
-    var done = this.async()
+  init () {
+    const done = this.async()
 
     this.prompt([{
       name: 'moduleName',
       message: 'What do you want to name your module?',
       default: this.appname.replace(/\s/g, '-'),
-      filter: function (val) {
-        return kebabCase(val)
-      }
+      filter: val => kebabCase(val)
     }, {
       name: 'githubUsername',
       message: 'What is your GitHub username?',
       store: true,
-      validate: function (val) {
-        return val.length > 0 ? true : 'You have to provide a username'
-      }
+      validate: val => val.length > 0 ? true : 'You have to provide a username'
     }, {
       name: 'website',
       message: 'What is the URL of your website?',
       store: true,
-      validate: function (val) {
-        return val.length > 0 ? true : 'You have to provide a website URL'
-      },
-      filter: function (val) {
-        return normalizeUrl(val)
-      }
-    }], function (props) {
+      validate: val => val.length > 0 ? true : 'You have to provide a website URL',
+      filter: val => normalizeUrl(val)
+    }], props => {
       this.moduleName = props.moduleName
       this.camelModuleName = camelCase(props.moduleName)
       this.githubUsername = props.githubUsername
@@ -55,10 +47,10 @@ module.exports = yeoman.generators.Base.extend({
       this.template('_package.json', 'package.json')
 
       done()
-    }.bind(this))
+    })
   },
 
-  install: function () {
+  install () {
     this.npmInstall()
   }
 })

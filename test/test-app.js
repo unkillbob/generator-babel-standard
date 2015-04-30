@@ -1,12 +1,11 @@
 /*eslint-env mocha */
 'use strict'
 
-var path = require('path')
-var assert = require('yeoman-generator').assert
-var helpers = require('yeoman-generator').test
+import path from 'path'
+import { assert, test as helpers } from 'yeoman-generator'
 
-describe('babel-standard:app', function () {
-  before(function (done) {
+describe('babel-standard:app', () => {
+  before(done => {
     helpers.run(path.join(__dirname, '../generators/app'))
       .withOptions({ skipInstall: true })
       .withPrompts({
@@ -17,7 +16,7 @@ describe('babel-standard:app', function () {
       .on('end', done)
   })
 
-  it('generates expected files', function () {
+  it('generates expected files', () => {
     assert.file([
       '.editorconfig',
       '.gitattributes',

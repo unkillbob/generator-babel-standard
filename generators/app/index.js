@@ -1,13 +1,31 @@
 'use strict';
 
-var normalizeUrl = require('normalize-url'),
-    humanizeUrl = require('humanize-url'),
-    yeoman = require('yeoman-generator'),
-    camelCase = require('lodash/string/camelCase'),
-    kebabCase = require('lodash/string/kebabCase');
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
 
-module.exports = yeoman.generators.Base.extend({
+var _normalizeUrl = require('normalize-url');
+
+var _normalizeUrl2 = _interopRequireDefault(_normalizeUrl);
+
+var _humanizeUrl = require('humanize-url');
+
+var _humanizeUrl2 = _interopRequireDefault(_humanizeUrl);
+
+var _yeoman = require('yeoman-generator');
+
+var _yeoman2 = _interopRequireDefault(_yeoman);
+
+var _camelCase = require('lodash/string/camelCase');
+
+var _camelCase2 = _interopRequireDefault(_camelCase);
+
+var _kebabCase = require('lodash/string/kebabCase');
+
+var _kebabCase2 = _interopRequireDefault(_kebabCase);
+
+module.exports = _yeoman2['default'].generators.Base.extend({
   init: function init() {
+    var _this = this;
+
     var done = this.async();
 
     this.prompt([{
@@ -15,7 +33,7 @@ module.exports = yeoman.generators.Base.extend({
       message: 'What do you want to name your module?',
       'default': this.appname.replace(/\s/g, '-'),
       filter: function filter(val) {
-        return kebabCase(val);
+        return _kebabCase2['default'](val);
       }
     }, {
       name: 'githubUsername',
@@ -32,30 +50,30 @@ module.exports = yeoman.generators.Base.extend({
         return val.length > 0 ? true : 'You have to provide a website URL';
       },
       filter: function filter(val) {
-        return normalizeUrl(val);
+        return _normalizeUrl2['default'](val);
       }
-    }], (function (props) {
-      this.moduleName = props.moduleName;
-      this.camelModuleName = camelCase(props.moduleName);
-      this.githubUsername = props.githubUsername;
-      this.name = this.user.git.name();
-      this.email = this.user.git.email();
-      this.website = props.website;
-      this.humanizedWebsite = humanizeUrl(this.website);
+    }], function (props) {
+      _this.moduleName = props.moduleName;
+      _this.camelModuleName = _camelCase2['default'](props.moduleName);
+      _this.githubUsername = props.githubUsername;
+      _this.name = _this.user.git.name();
+      _this.email = _this.user.git.email();
+      _this.website = props.website;
+      _this.humanizedWebsite = _humanizeUrl2['default'](_this.website);
 
-      this.template('editorconfig', '.editorconfig');
-      this.template('gitattributes', '.gitattributes');
-      this.template('gitignore', '.gitignore');
-      this.template('travis.yml', '.travis.yml');
-      this.template('src/index.js');
-      this.template('test/test.js');
-      this.template('LICENSE');
-      this.template('README.md');
+      _this.template('editorconfig', '.editorconfig');
+      _this.template('gitattributes', '.gitattributes');
+      _this.template('gitignore', '.gitignore');
+      _this.template('travis.yml', '.travis.yml');
+      _this.template('src/index.js');
+      _this.template('test/test.js');
+      _this.template('LICENSE');
+      _this.template('README.md');
       // needed so npm doesn't try to use it and fail
-      this.template('_package.json', 'package.json');
+      _this.template('_package.json', 'package.json');
 
       done();
-    }).bind(this));
+    });
   },
 
   install: function install() {
