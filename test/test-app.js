@@ -7,7 +7,7 @@ var helpers = require('yeoman-generator').test
 
 describe('babel-standard:app', function () {
   before(function (done) {
-    helpers.run(path.join(__dirname, '../app'))
+    helpers.run(path.join(__dirname, '../generators/app'))
       .withOptions({ skipInstall: true })
       .withPrompts({
         moduleName: 'foo-bar',

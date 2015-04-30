@@ -24,14 +24,14 @@
   "devDependencies": {
     "babel": "*",
     "mocha": "*",
-    "standard": "*",
-    "onchange": "1.x"
+    "onchange": "1.x",
+    "standard": "*"
   },
   "standard": {
     "ignore": [
       "coverage/**",
-      "node_modules/**",
-      "dist/**"
+      "dist/**",
+      "node_modules/**"
     ]
   }
 }
