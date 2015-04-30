@@ -44,6 +44,7 @@ module.exports = yeoman.generators.Base.extend({
       this.humanizedWebsite = humanizeUrl(this.website)
 
       this.template('editorconfig', '.editorconfig')
+      this.template('gitattributes', '.gitattributes')
       this.template('gitignore', '.gitignore')
       this.template('travis.yml', '.travis.yml')
       this.template('src/index.js')
