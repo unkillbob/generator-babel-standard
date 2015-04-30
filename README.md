@@ -41,4 +41,4 @@ yo babel-standard
 
 ## License
 
-MIT
+MIT © [James Bunt](http://github.com/unkillbob)
