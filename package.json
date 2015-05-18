@@ -21,7 +21,7 @@
     "prepublish": "npm run build && npm test"
   },
   "files": [
-    "app"
+    "generators/app"
   ],
   "keywords": [
     "yeoman-generator"
