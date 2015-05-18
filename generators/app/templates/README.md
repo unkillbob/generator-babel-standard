@@ -1,7 +1,7 @@
 # <%= moduleName %>
 [![travis][travis-image]][travis-url]
 [![npm][npm-image]][npm-url]
-[![js-standard-style][standard-style-image]][downloads-url]
+[![js-standard-style][standard-style-image]][standard-style-url]
 
 [travis-image]: https://img.shields.io/travis/<%= githubUsername %>/<%= moduleName %>.svg?style=flat
 [travis-url]: https://travis-ci.org/<%= githubUsername %>/<%= moduleName %>
