@@ -34,6 +34,28 @@ yo babel-standard
 
 ![](screenshot.png)
 
+## Contributing
+
+### Build
+
+```js
+npm run build
+```
+
+### Test
+
+```js
+npm test
+```
+
+### Watch
+
+To watch for changes, build them and run the tests:
+
+```js
+npm run watch
+```
+
 ## Credits
 
 - Generator heavily inspired by / borrowed from [sindresorhus' generator-nm](https://github.com/sindresorhus/generator-nm).

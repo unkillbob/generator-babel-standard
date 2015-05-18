@@ -45,6 +45,28 @@ Default: `false`
 
 Lorem ipsum.
 
+## Contributing
+
+### Build
+
+```js
+npm run build
+```
+
+### Test
+
+```js
+npm test
+```
+
+### Watch
+
+To watch for changes, build them and run the tests:
+
+```js
+npm run watch
+```
+
 ## License
 
 MIT © [<%= name %>](<%= website %>)
