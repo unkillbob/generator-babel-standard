@@ -42,7 +42,8 @@
     "ignore": [
       "coverage/**",
       "generators/**",
-      "node_modules/**"
+      "node_modules/**",
+      "example/dist/**"
     ]
   }
 }
