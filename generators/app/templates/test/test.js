@@ -4,8 +4,8 @@
 import assert from 'assert'
 import <%= camelModuleName %> from '../'
 
-describe('<%= moduleName %>', () => {
-  it('should ', () => {
+describe('<%= moduleName %>', function () {
+  it('should ', function () {
     assert.strictEqual(<%= camelModuleName %>('unicorns'), 'unicorns & rainbows')
   })
 })
