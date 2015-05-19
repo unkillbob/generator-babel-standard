@@ -3,7 +3,7 @@
   "version": "0.2.2",
   "description": "Yeoman generator for simple node modules with babel transpiling and code style with feross/standard",
   "license": "MIT",
-  "main": "app/index.js",
+  "main": "generators/app/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/unkillbob/generator-babel-standard.git"
@@ -21,7 +21,7 @@
     "prepublish": "npm run build && npm test"
   },
   "files": [
-    "generators/app"
+    "generators"
   ],
   "keywords": [
     "yeoman-generator"
