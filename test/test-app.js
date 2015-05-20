@@ -4,8 +4,8 @@
 import path from 'path'
 import { assert, test as helpers } from 'yeoman-generator'
 
-describe('babel-standard:app', () => {
-  before(done => {
+describe('babel-standard:app', function () {
+  before(function (done) {
     helpers.run(path.join(__dirname, '../generators/app'))
       .withOptions({ skipInstall: true })
       .withPrompts({
@@ -16,7 +16,7 @@ describe('babel-standard:app', () => {
       .on('end', done)
   })
 
-  it('generates expected files', () => {
+  it('generates expected files', function () {
     assert.file([
       '.editorconfig',
       '.gitattributes',
