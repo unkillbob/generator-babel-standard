@@ -10,9 +10,9 @@ var _humanizeUrl = require('humanize-url');
 
 var _humanizeUrl2 = _interopRequireDefault(_humanizeUrl);
 
-var _yeoman = require('yeoman-generator');
+var _generators = require('yeoman-generator');
 
-var _yeoman2 = _interopRequireDefault(_yeoman);
+var _generators2 = _interopRequireDefault(_generators);
 
 var _camelCase = require('lodash/string/camelCase');
 
@@ -22,7 +22,7 @@ var _kebabCase = require('lodash/string/kebabCase');
 
 var _kebabCase2 = _interopRequireDefault(_kebabCase);
 
-module.exports = _yeoman2['default'].generators.Base.extend({
+module.exports = _generators2['default'].Base.extend({
   init: function init() {
     var _this = this;
 

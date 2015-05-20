@@ -2,11 +2,11 @@
 
 import normalizeUrl from 'normalize-url'
 import humanizeUrl from 'humanize-url'
-import yeoman from 'yeoman-generator'
+import generators from 'yeoman-generator'
 import camelCase from 'lodash/string/camelCase'
 import kebabCase from 'lodash/string/kebabCase'
 
-module.exports = yeoman.generators.Base.extend({
+module.exports = generators.Base.extend({
   init () {
     const done = this.async()
 

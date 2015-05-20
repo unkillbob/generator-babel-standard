@@ -18,6 +18,7 @@
     "post-build": "onchange 'generators/**' 'test/**.js' -- npm test",
     "watch": "npm run build -- -w & npm run post-build",
     "test": "standard && mocha --compilers js:babel/register",
+    "example": "syo ./generators/app -moduleName example -githubUsername unkillbob -website github.com/unkillbob example/",
     "prepublish": "npm run build && npm test"
   },
   "files": [
@@ -36,6 +37,7 @@
     "babel": "*",
     "mocha": "*",
     "onchange": "1.x",
+    "silent-yeoman": "0.0.4",
     "standard": "*"
   },
   "standard": {
