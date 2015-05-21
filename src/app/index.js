@@ -7,25 +7,65 @@ import camelCase from 'lodash/string/camelCase'
 import kebabCase from 'lodash/string/kebabCase'
 
 module.exports = generators.Base.extend({
+  constructor () {
+    generators.Base.apply(this, arguments)
+
+    this.option('silent', {
+      defaults: false,
+      type: Boolean,
+      hide: true
+    })
+
+    this.argument('githubUsername', {
+      type: String,
+      required: this.options.silent
+    })
+    this.argument('website', {
+      type: String,
+      required: this.options.silent
+    })
+  },
+
   init () {
-    const done = this.async()
+    const done = this.async(),
+      silent = this.options.silent
 
     this.prompt([{
       name: 'moduleName',
       message: 'What do you want to name your module?',
       default: this.appname.replace(/\s/g, '-'),
-      filter: val => kebabCase(val)
+      filter: val => kebabCase(val),
+      when: props => {
+        if (silent) {
+          props.moduleName = this.appname
+        }
+        return !silent
+      }
     }, {
       name: 'githubUsername',
       message: 'What is your GitHub username?',
+      default: this.githubUsername,
       store: true,
-      validate: val => val.length > 0 ? true : 'You have to provide a username'
+      validate: val => val.length > 0 ? true : 'You have to provide a username',
+      when: props => {
+        if (silent) {
+          props.githubUsername = this.githubUsername
+        }
+        return !silent
+      }
     }, {
       name: 'website',
       message: 'What is the URL of your website?',
       store: true,
+      default: this.website,
       validate: val => val.length > 0 ? true : 'You have to provide a website URL',
-      filter: val => normalizeUrl(val)
+      filter: val => normalizeUrl(val),
+      when: props => {
+        if (silent) {
+          props.website = this.website
+        }
+        return !silent
+      }
     }], props => {
       this.moduleName = props.moduleName
       this.camelModuleName = camelCase(props.moduleName)

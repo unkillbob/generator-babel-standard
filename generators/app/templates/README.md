@@ -31,8 +31,8 @@ var <%= camelModuleName %> = require('<%= moduleName %>');
 
 #### input
 
-*Required*  
-Type: `string`
+- *Required*
+- Type: `string`
 
 Lorem ipsum.
 
@@ -40,8 +40,8 @@ Lorem ipsum.
 
 ##### foo
 
-Type: `boolean`  
-Default: `false`
+- Type: `boolean`  
+- Default: `false`
 
 Lorem ipsum.
 

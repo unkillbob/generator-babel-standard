@@ -23,10 +23,30 @@ var _kebabCase = require('lodash/string/kebabCase');
 var _kebabCase2 = _interopRequireDefault(_kebabCase);
 
 module.exports = _generators2['default'].Base.extend({
+  constructor: function constructor() {
+    _generators2['default'].Base.apply(this, arguments);
+
+    this.option('silent', {
+      defaults: false,
+      type: Boolean,
+      hide: true
+    });
+
+    this.argument('githubUsername', {
+      type: String,
+      required: this.options.silent
+    });
+    this.argument('website', {
+      type: String,
+      required: this.options.silent
+    });
+  },
+
   init: function init() {
     var _this = this;
 
-    var done = this.async();
+    var done = this.async(),
+        silent = this.options.silent;
 
     this.prompt([{
       name: 'moduleName',
@@ -34,23 +54,43 @@ module.exports = _generators2['default'].Base.extend({
       'default': this.appname.replace(/\s/g, '-'),
       filter: function filter(val) {
         return _kebabCase2['default'](val);
+      },
+      when: function when(props) {
+        if (silent) {
+          props.moduleName = _this.appname;
+        }
+        return !silent;
       }
     }, {
       name: 'githubUsername',
       message: 'What is your GitHub username?',
+      'default': this.githubUsername,
       store: true,
       validate: function validate(val) {
         return val.length > 0 ? true : 'You have to provide a username';
+      },
+      when: function when(props) {
+        if (silent) {
+          props.githubUsername = _this.githubUsername;
+        }
+        return !silent;
       }
     }, {
       name: 'website',
       message: 'What is the URL of your website?',
       store: true,
+      'default': this.website,
       validate: function validate(val) {
         return val.length > 0 ? true : 'You have to provide a website URL';
       },
       filter: function filter(val) {
         return _normalizeUrl2['default'](val);
+      },
+      when: function when(props) {
+        if (silent) {
+          props.website = _this.website;
+        }
+        return !silent;
       }
     }], function (props) {
       _this.moduleName = props.moduleName;
