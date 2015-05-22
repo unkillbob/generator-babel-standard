@@ -31,8 +31,8 @@ example('unicorns');
 
 #### input
 
-*Required*  
-Type: `string`
+- *Required*
+- Type: `string`
 
 Lorem ipsum.
 
@@ -40,8 +40,8 @@ Lorem ipsum.
 
 ##### foo
 
-Type: `boolean`  
-Default: `false`
+- Type: `boolean`  
+- Default: `false`
 
 Lorem ipsum.
 
@@ -69,4 +69,4 @@ npm run watch
 
 ## License
 
-MIT © [James Bunt](http://github.com/unkillbob)
+MIT © [James Bunt](github.com/unkillbob)

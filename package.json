@@ -15,10 +15,12 @@
   },
   "scripts": {
     "build": "babel src -d generators",
-    "post-build": "onchange 'generators/**' 'test/**.js' -- npm test",
+    "post-build": "onchange 'generators/**' 'test/**.js' -- npm run on-change",
+    "on-change": "npm test & npm run example",
     "watch": "npm run build -- -w & npm run post-build",
     "test": "standard && mocha --compilers js:babel/register",
-    "prepublish": "npm run build && npm test"
+    "example": "node generators/generate-example.js",
+    "prepublish": "npm run build && npm test && npm run example"
   },
   "files": [
     "generators"
@@ -36,7 +38,9 @@
     "babel": "*",
     "mocha": "*",
     "onchange": "1.x",
-    "standard": "*"
+    "rimraf": "^2.3.4",
+    "standard": "*",
+    "yeoman-environment": "^1.2.5"
   },
   "standard": {
     "ignore": [

@@ -2,15 +2,56 @@
 
 import normalizeUrl from 'normalize-url'
 import humanizeUrl from 'humanize-url'
-import yeoman from 'yeoman-generator'
+import generators from 'yeoman-generator'
 import camelCase from 'lodash/string/camelCase'
 import kebabCase from 'lodash/string/kebabCase'
+import extend from 'lodash/object/extend'
+import map from 'lodash/collection/map'
+import isUndefined from 'lodash/lang/isUndefined'
 
-module.exports = yeoman.generators.Base.extend({
+module.exports = generators.Base.extend({
+  constructor () {
+    generators.Base.apply(this, arguments)
+
+    this.option('silent', {
+      defaults: false,
+      type: Boolean,
+      hide: true
+    })
+
+    this.argument('githubUsername', {
+      type: String,
+      required: this.options.silent
+    })
+    this.argument('website', {
+      type: String,
+      required: this.options.silent
+    })
+  },
+
+  _configurePrompts (prompts) {
+    const silent = this.options.silent
+
+    return map(prompts, prompt => {
+      const name = prompt.name
+      const defaultVal = !isUndefined(prompt.default) ? prompt.default : this[name]
+
+      return extend({
+        default: defaultVal,
+        when: props => {
+          if (silent) {
+            props[name] = defaultVal
+          }
+          return !silent
+        }
+      }, prompt)
+    })
+  },
+
   init () {
     const done = this.async()
 
-    this.prompt([{
+    const prompts = this._configurePrompts([{
       name: 'moduleName',
       message: 'What do you want to name your module?',
       default: this.appname.replace(/\s/g, '-'),
@@ -26,7 +67,9 @@ module.exports = yeoman.generators.Base.extend({
       store: true,
       validate: val => val.length > 0 ? true : 'You have to provide a website URL',
       filter: val => normalizeUrl(val)
-    }], props => {
+    }])
+
+    this.prompt(prompts, props => {
       this.moduleName = props.moduleName
       this.camelModuleName = camelCase(props.moduleName)
       this.githubUsername = props.githubUsername

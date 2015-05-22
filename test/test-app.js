@@ -7,7 +7,10 @@ import { assert, test as helpers } from 'yeoman-generator'
 describe('babel-standard:app', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../generators/app'))
-      .withOptions({ skipInstall: true })
+      .withOptions({
+        skipInstall: true,
+        'skip-cache': true
+      })
       .withPrompts({
         moduleName: 'foo-bar',
         githubUsername: 'fubar',
