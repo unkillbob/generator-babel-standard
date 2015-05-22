@@ -12,6 +12,26 @@
 
 > [Yeoman](http://yeoman.io) generator for simple node modules with [babel](https://github.com/babel/babel) transpiling and code style with [feross/standard](https://github.com/feross/standard).
 
+## What do I get?
+
+This generator scaffolds a simple node module with all the bells and whistles.
+
+#### ES6 with Babel
+
+Write your code in the latest version of JavaScript and let [babel](https://github.com/babel/babel) transpile it to compatible ES5 code for you.
+
+#### Code style and linting with Standard
+
+Write your JavaScript [standard](https://github.com/feross/standard) style.
+
+#### Extensive build tooling
+
+Transpile your code, run your tests, or start a file watcher that does both of those on every file change. Extensive build tooling implemented via [npm run scripts](https://docs.npmjs.com/misc/scripts).
+
+### See for yourself!
+
+Check out the [example folder](/example) for a sneak peak at a generated module.
+
 ## Getting Started
 
 Install [Yeoman](http://yeoman.io):
