@@ -5,6 +5,9 @@ import humanizeUrl from 'humanize-url'
 import generators from 'yeoman-generator'
 import camelCase from 'lodash/string/camelCase'
 import kebabCase from 'lodash/string/kebabCase'
+import extend from 'lodash/object/extend'
+import map from 'lodash/collection/map'
+import isUndefined from 'lodash/lang/isUndefined'
 
 module.exports = generators.Base.extend({
   constructor () {
@@ -26,47 +29,47 @@ module.exports = generators.Base.extend({
     })
   },
 
-  init () {
-    const done = this.async(),
-      silent = this.options.silent
+  _configurePrompts (prompts) {
+    const silent = this.options.silent
 
-    this.prompt([{
+    return map(prompts, prompt => {
+      const name = prompt.name
+      const defaultVal = !isUndefined(prompt.default) ? prompt.default : this[name]
+
+      return extend({
+        default: defaultVal,
+        when: props => {
+          if (silent) {
+            props[name] = defaultVal
+          }
+          return !silent
+        }
+      }, prompt)
+    })
+  },
+
+  init () {
+    const done = this.async()
+
+    const prompts = this._configurePrompts([{
       name: 'moduleName',
       message: 'What do you want to name your module?',
       default: this.appname.replace(/\s/g, '-'),
-      filter: val => kebabCase(val),
-      when: props => {
-        if (silent) {
-          props.moduleName = this.appname
-        }
-        return !silent
-      }
+      filter: val => kebabCase(val)
     }, {
       name: 'githubUsername',
       message: 'What is your GitHub username?',
-      default: this.githubUsername,
       store: true,
-      validate: val => val.length > 0 ? true : 'You have to provide a username',
-      when: props => {
-        if (silent) {
-          props.githubUsername = this.githubUsername
-        }
-        return !silent
-      }
+      validate: val => val.length > 0 ? true : 'You have to provide a username'
     }, {
       name: 'website',
       message: 'What is the URL of your website?',
       store: true,
-      default: this.website,
       validate: val => val.length > 0 ? true : 'You have to provide a website URL',
-      filter: val => normalizeUrl(val),
-      when: props => {
-        if (silent) {
-          props.website = this.website
-        }
-        return !silent
-      }
-    }], props => {
+      filter: val => normalizeUrl(val)
+    }])
+
+    this.prompt(prompts, props => {
       this.moduleName = props.moduleName
       this.camelModuleName = camelCase(props.moduleName)
       this.githubUsername = props.githubUsername
