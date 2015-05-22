@@ -3,6 +3,7 @@
 
 import yeoman from 'yeoman-environment'
 import path from 'path'
+import rimraf from 'rimraf'
 
 const args = ['babel-standard', 'unkillbob', 'github.com/unkillbob']
 const options = {
@@ -11,9 +12,12 @@ const options = {
   'skip-cache': true
 }
 
-process.chdir(path.join(__dirname, '../example/'))
+const exampleDir = path.join(__dirname, '../example/'),
+  allFilesInExampleDir = path.join(exampleDir, '{.,}*')
 
-const env = yeoman.createEnv()
-env.lookup(function () {
-  env.run(args, options)
+rimraf(allFilesInExampleDir, () => {
+  process.chdir(exampleDir)
+
+  const env = yeoman.createEnv()
+  env.lookup(() => env.run(args, options))
 })

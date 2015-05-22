@@ -15,7 +15,8 @@
   },
   "scripts": {
     "build": "babel src -d generators",
-    "post-build": "onchange 'generators/**' 'test/**.js' -- npm test && npm run example",
+    "post-build": "onchange 'generators/**' 'test/**.js' -- npm run on-change",
+    "on-change": "npm test & npm run example",
     "watch": "npm run build -- -w & npm run post-build",
     "test": "standard && mocha --compilers js:babel/register",
     "example": "node generators/generate-example.js",
@@ -37,6 +38,7 @@
     "babel": "*",
     "mocha": "*",
     "onchange": "1.x",
+    "rimraf": "^2.3.4",
     "silent-yeoman": "0.0.4",
     "standard": "*",
     "yeoman-environment": "^1.2.5"
