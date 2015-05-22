@@ -14,9 +14,9 @@ var _path2 = _interopRequireDefault(_path);
 
 var args = ['babel-standard', 'unkillbob', 'github.com/unkillbob'];
 var options = {
+  silent: true,
   skipInstall: true,
-  'skip-cache': true,
-  silent: true
+  'skip-cache': true
 };
 
 process.chdir(_path2['default'].join(__dirname, '../example/'));

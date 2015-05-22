@@ -1,6 +1,6 @@
 'use strict';
 
-var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _normalizeUrl = require('normalize-url');
 
@@ -10,21 +10,21 @@ var _humanizeUrl = require('humanize-url');
 
 var _humanizeUrl2 = _interopRequireDefault(_humanizeUrl);
 
-var _generators = require('yeoman-generator');
+var _yeomanGenerator = require('yeoman-generator');
 
-var _generators2 = _interopRequireDefault(_generators);
+var _yeomanGenerator2 = _interopRequireDefault(_yeomanGenerator);
 
-var _camelCase = require('lodash/string/camelCase');
+var _lodashStringCamelCase = require('lodash/string/camelCase');
 
-var _camelCase2 = _interopRequireDefault(_camelCase);
+var _lodashStringCamelCase2 = _interopRequireDefault(_lodashStringCamelCase);
 
-var _kebabCase = require('lodash/string/kebabCase');
+var _lodashStringKebabCase = require('lodash/string/kebabCase');
 
-var _kebabCase2 = _interopRequireDefault(_kebabCase);
+var _lodashStringKebabCase2 = _interopRequireDefault(_lodashStringKebabCase);
 
-module.exports = _generators2['default'].Base.extend({
+module.exports = _yeomanGenerator2['default'].Base.extend({
   constructor: function constructor() {
-    _generators2['default'].Base.apply(this, arguments);
+    _yeomanGenerator2['default'].Base.apply(this, arguments);
 
     this.option('silent', {
       defaults: false,
@@ -53,7 +53,7 @@ module.exports = _generators2['default'].Base.extend({
       message: 'What do you want to name your module?',
       'default': this.appname.replace(/\s/g, '-'),
       filter: function filter(val) {
-        return _kebabCase2['default'](val);
+        return (0, _lodashStringKebabCase2['default'])(val);
       },
       when: function when(props) {
         if (silent) {
@@ -84,7 +84,7 @@ module.exports = _generators2['default'].Base.extend({
         return val.length > 0 ? true : 'You have to provide a website URL';
       },
       filter: function filter(val) {
-        return _normalizeUrl2['default'](val);
+        return (0, _normalizeUrl2['default'])(val);
       },
       when: function when(props) {
         if (silent) {
@@ -94,12 +94,12 @@ module.exports = _generators2['default'].Base.extend({
       }
     }], function (props) {
       _this.moduleName = props.moduleName;
-      _this.camelModuleName = _camelCase2['default'](props.moduleName);
+      _this.camelModuleName = (0, _lodashStringCamelCase2['default'])(props.moduleName);
       _this.githubUsername = props.githubUsername;
       _this.name = _this.user.git.name();
       _this.email = _this.user.git.email();
       _this.website = props.website;
-      _this.humanizedWebsite = _humanizeUrl2['default'](_this.website);
+      _this.humanizedWebsite = (0, _humanizeUrl2['default'])(_this.website);
 
       _this.template('editorconfig', '.editorconfig');
       _this.template('gitattributes', '.gitattributes');
