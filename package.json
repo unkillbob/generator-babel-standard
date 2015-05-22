@@ -39,7 +39,6 @@
     "mocha": "*",
     "onchange": "1.x",
     "rimraf": "^2.3.4",
-    "silent-yeoman": "0.0.4",
     "standard": "*",
     "yeoman-environment": "^1.2.5"
   },
