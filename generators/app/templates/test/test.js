@@ -1,11 +1,11 @@
 /*eslint-env mocha */
 'use strict'
 
-import assert from 'assert'
+import { expect } from 'chai'
 import <%= camelModuleName %> from '../'
 
 describe('<%= moduleName %>', function () {
   it('should ', function () {
-    assert.strictEqual(<%= camelModuleName %>('unicorns'), 'unicorns & rainbows')
+    expect(<%= camelModuleName %>('unicorns')).to.equal('unicorns & rainbows')
   })
 })
