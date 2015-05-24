@@ -23,6 +23,7 @@
   "dependencies": {},
   "devDependencies": {
     "babel": "*",
+    "chai": "*",
     "mocha": "*",
     "onchange": "1.x",
     "standard": "*"

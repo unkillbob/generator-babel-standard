@@ -1,11 +1,11 @@
 /*eslint-env mocha */
 'use strict'
 
-import assert from 'assert'
+import { expect } from 'chai'
 import example from '../'
 
 describe('example', function () {
   it('should ', function () {
-    assert.strictEqual(example('unicorns'), 'unicorns & rainbows')
+    expect(example('unicorns')).to.equal('unicorns & rainbows')
   })
 })
