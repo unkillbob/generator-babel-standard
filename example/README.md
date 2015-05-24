@@ -40,7 +40,7 @@ Lorem ipsum.
 
 ##### foo
 
-- Type: `boolean`  
+- Type: `boolean`
 - Default: `false`
 
 Lorem ipsum.
